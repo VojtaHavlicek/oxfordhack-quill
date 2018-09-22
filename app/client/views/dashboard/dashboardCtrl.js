@@ -91,7 +91,7 @@ angular.module('reg')
           text: "Are you sure you would like to decline your admission? \n\n You can't go back!",
           type: "warning",
           showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
+          confirmButtonColor: "#002147",
           confirmButtonText: "Yes, I can't make it.",
           closeOnConfirm: true
           }, function(){

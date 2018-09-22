@@ -2,6 +2,7 @@ var path = require('path');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
+
 var templatesDir = path.join(__dirname, '../templates');
 var emailTemplates = require('email-templates');
 
@@ -18,11 +19,19 @@ var EMAIL_PASS = process.env.EMAIL_PASS;
 var EMAIL_PORT = process.env.EMAIL_PORT;
 var EMAIL_CONTACT = process.env.EMAIL_CONTACT;
 var EMAIL_HEADER_IMAGE = process.env.EMAIL_HEADER_IMAGE;
-if(EMAIL_HEADER_IMAGE.indexOf("https") == -1){
-  EMAIL_HEADER_IMAGE = ROOT_URL + EMAIL_HEADER_IMAGE;
-}
-
+// if(EMAIL_HEADER_IMAGE.indexOf("https") == -1 && EMAIL_HEADER_IMAGE.indexOf("http") == -1){
+//  EMAIL_HEADER_IMAGE = ROOT_URL + EMAIL_HEADER_IMAGE;
+//}
 var NODE_ENV = process.env.NODE_ENV;
+var mailjet = require('node-mailjet').connect(EMAIL_USER, EMAIL_PASS);
+
+
+// test
+ 
+
+function handleError(err) {
+	throw new Error(err.ErrorMessage);
+}
 
 var options = {
   host: EMAIL_HOST,
@@ -34,10 +43,12 @@ var options = {
   }
 };
 
+var sendEmail = mailjet.post('send');
+
+
+
 var transporter = nodemailer.createTransport(smtpTransport(options));
-
 var controller = {};
-
 controller.transporter = transporter;
 
 function sendOne(templateName, options, data, callback){
@@ -61,21 +72,27 @@ function sendOne(templateName, options, data, callback){
       if (err) {
         return callback(err);
       }
+      
+      var emailData = {
+           'FromEmail': 'vojtech.havlicek@keble.ox.ac.uk',
+           'FromName': HACKATHON_NAME,
+           'Subject': options.subject,
+	   'Html-part': html,
+	   'Text-part': text,
+           'Recipients': [{'Email': options.to}]}; 
 
-      transporter.sendMail({
-        from: EMAIL_CONTACT,
-        to: options.to,
-        subject: options.subject,
-        html: html,
-        text: text
-      }, function(err, info){
-        if(callback){
-          callback(err, info);
-        }
-      });
+      console.log(emailData);
+
+      sendEmail
+        .request(emailData)
+	.then(function(err, info){
+                    if(callback){
+                        callback(err, info);
+                    }
+        }).catch(handleError);
     });
   });
-}
+};
 
 /**
  * Send a verification email to a user, with a verification token to enter.

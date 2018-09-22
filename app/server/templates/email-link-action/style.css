@@ -211,7 +211,7 @@ h4{
 * @tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
 */
 .headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
-  /*@editable*/ color:#EB4102;
+  /*@editable*/ color:#002147;
   /*@editable*/ font-weight:normal;
   /*@editable*/ text-decoration:underline;
 }
@@ -258,7 +258,7 @@ h4{
 * @tip Set the styling for your email's main content links. Choose a color that helps them stand out from your text.
 */
 .bodyContent a:link, .bodyContent a:visited, /* Yahoo! Mail Override */ .bodyContent a .yshortcuts /* Yahoo! Mail Override */{
-  /*@editable*/ color:#EB4102;
+  /*@editable*/ color:#002147;
   /*@editable*/ font-weight:normal;
   /*@editable*/ text-decoration:underline;
 }
@@ -270,7 +270,7 @@ h4{
 }
 
 .pink.button {
-  background: #e76482;
+  background: #002147;
   padding: 12px 24px;
   color: white;
   text-decoration: none;

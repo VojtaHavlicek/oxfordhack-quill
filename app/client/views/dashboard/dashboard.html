@@ -34,7 +34,7 @@
         <div class="ui divider"></div>
 
         <div ng-if="user.profile.name.length > 0">
-          <p>
+          <p style="text-align:center">
             <strong>
               Welcome back, {{user.profile.name}}!
             </strong>
@@ -54,7 +54,7 @@
           <p>
             {{ DASHBOARD.UNVERIFIED }}
           </p>
-          <div class="ui purple button" ng-click="resendEmail()">
+          <div class="ui black button" ng-click="resendEmail()">
             Resend verification email
           </div>
         </div>
@@ -76,11 +76,11 @@
           </strong>
           {{ timeConfirm }}
         </div>
-
+	</br>
         <div
           ng-if="dashState('openAndIncomplete')"
           class="description">
-          <p>
+          <p style="text-align:center">
             <strong>
                 {{ DASHBOARD.INCOMPLETE_TITLE }}
             </strong>
@@ -89,17 +89,16 @@
             {{ DASHBOARD.INCOMPLETE }}
           </p>
 
-          <div class="ui purple button"
+          <div class="ui black button"
                ui-sref="app.application">
             Complete your application
           </div>
 
         </div>
-
         <div
           ng-if="dashState('openAndSubmitted')"
           class="description">
-          <p>
+          <p style="text-align:center">
             <strong>
                 {{ DASHBOARD.SUBMITTED_TITLE }}
             </strong>
@@ -107,20 +106,20 @@
           <p>
             {{ DASHBOARD.SUBMITTED }}
           </p>
-          <div class="ui purple button"
+          <div class="ui black button"
                ui-sref="app.application">
             Edit your application
           </div>
 
           <div
-            class="ui pink button"
+            class="ui black button"
             ng-show="!user.teamCode"
             ui-sref="app.team">
             Create or join a team
           </div>
 
           <div
-            class="ui pink button"
+            class="ui black button"
             ng-show="user.teamCode"
             ui-sref="app.team">
             View your Team
@@ -149,13 +148,13 @@
             ng-bind-html="waitlistText">
           </div>
 
-          <div class="ui purple button"
+          <div class="ui black button"
                ui-sref="app.application">
             View your application
           </div>
 
           <div
-            class="ui pink button"
+            class="ui black button"
             ng-show="user.teamCode"
             ui-sref="app.team">
             View your Team
@@ -183,12 +182,12 @@
             </h4>
           </div>
 
-          <div class="ui purple button"
+          <div class="ui black button"
                ui-sref="app.confirmation">
             Confirm your spot
           </div>
 
-          <div class="ui red button"
+          <div class="ui black button"
                ng-click="declineAdmission()">
             Sorry, I can't make it
           </div>
@@ -228,12 +227,12 @@
             ng-bind-html="confirmationText">
           </div>
 
-          <div class="ui purple button"
+          <div class="ui black button"
                ui-sref="app.confirmation">
             {{pastConfirmation ? 'View' : 'Edit'}} your confirmation information
           </div>
 
-          <div class="ui red button"
+          <div class="ui black button"
                ng-click="declineAdmission()">
             Sorry, I can't make it
           </div>

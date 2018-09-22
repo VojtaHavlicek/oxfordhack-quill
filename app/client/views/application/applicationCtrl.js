@@ -75,7 +75,7 @@ angular.module('reg')
               title: "Awesome!",
               text: "Your application has been saved.",
               type: "success",
-              confirmButtonColor: "#e76482"
+              confirmButtonColor: "#002147"
             }, function(){
               $state.go('app.dashboard');
             });
@@ -90,22 +90,24 @@ angular.module('reg')
       }
 
       function minorsAreAllowed() {
-        return Settings.data.allowMinors;
+        return true;//Settings.data.allowMinors;
       }
 
       function minorsValidation() {
         // Are minors allowed to register?
-        if (isMinor() && !minorsAreAllowed()) {
-          return false;
-        }
+        //if (isMinor() && !minorsAreAllowed()) {
+        //  return false;
+        //}
         return true;
       }
 
       function _setupForm(){
         // Custom minors validation rule
-        $.fn.form.settings.rules.allowMinors = function (value) {
-          return minorsValidation();
-        };
+        $.fn.form.settings.rules.allowMinors = true; 
+	      
+	//function (value) {
+        //  return minorsValidation();
+        //};
 
         // Semantic-UI form validation
         $('.ui.form').form({
@@ -146,16 +148,17 @@ angular.module('reg')
                   prompt: 'Please select a gender.'
                 }
               ]
-            },
-            adult: {
-              identifier: 'adult',
-              rules: [
-                {
-                  type: 'allowMinors',
-                  prompt: 'You must be an adult, or an MIT student.'
-                }
-              ]
-            }
+	    }
+          // },
+          //  adult: {
+          //    identifier: 'adult',
+          //    rules: [
+          //      {
+          //        type: 'allowMinors',
+          //        prompt: 'You must be an adult, or an MIT student.'
+          //      }
+          //    ]
+	  //}
           }
         });
       }

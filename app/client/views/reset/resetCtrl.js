@@ -27,7 +27,7 @@ angular.module('reg')
               title: "Neato!",
               text: "Your password has been changed!",
               type: "success",
-              confirmButtonColor: "#e76482"
+              confirmButtonColor: "#002147"
             }, function(){
               $state.go('login');
             });

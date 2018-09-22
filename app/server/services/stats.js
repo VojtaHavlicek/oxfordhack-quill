@@ -19,10 +19,11 @@ function calculateStats(){
       },
       schools: {},
       year: {
-        '2016': 0,
-        '2017': 0,
         '2018': 0,
         '2019': 0,
+        '2020': 0,
+        '2021': 0,
+	'2022': 0
       }
     },
 
@@ -40,18 +41,10 @@ function calculateStats(){
     confirmedNone: 0,
 
     shirtSizes: {
-      'XS': 0,
       'S': 0,
       'M': 0,
       'L': 0,
       'XL': 0,
-      'XXL': 0,
-      'WXS': 0,
-      'WS': 0,
-      'WM': 0,
-      'WL': 0,
-      'WXL': 0,
-      'WXXL': 0,
       'None': 0
     },
 

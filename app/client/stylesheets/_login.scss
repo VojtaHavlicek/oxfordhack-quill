@@ -1,8 +1,17 @@
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #login {
   height: 100%;
   width: 100%;
-  background-color: $login-bg-color;
-  background: $login-bg; 
+  background-color: #002147; // $login-bg-color;
+  background:url(/assets/images/hero.jpg);
+  background-position: 50% 50%;
+// $login-bg; 
   background-size: cover;
 
   > .container {
@@ -28,6 +37,7 @@
 
       .button {
         color: white;
+
         &.login {
           background: $login-color;
         }
