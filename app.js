@@ -1,6 +1,13 @@
 // Load the dotfiles.
 require('dotenv').load({silent: true});
 
+var fs              = require('fs');
+var http            = require('http');
+var https           = require('https');
+//var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+//var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+//var credentials = {key: privateKey, cert: certificate};
+
 var express         = require('express');
 
 // Middleware!
@@ -28,7 +35,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use(methodOverride());
-
 app.use(express.static(__dirname + '/app/client'));
 
 // Routers =====================================================================
@@ -40,7 +46,6 @@ app.use('/api', apiRouter);
 var authRouter = express.Router();
 require('./app/server/routes/auth')(authRouter);
 app.use('/auth', authRouter);
-
 require('./app/server/routes')(app);
 
 // listen (start app with node server.js) ======================================
