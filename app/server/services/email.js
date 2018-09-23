@@ -74,7 +74,7 @@ function sendOne(templateName, options, data, callback){
       }
       
       var emailData = {
-           'FromEmail': 'vojtech.havlicek@keble.ox.ac.uk',
+           'FromEmail': EMAIL_CONTACT,//'team@oxfordhack.uk',
            'FromName': HACKATHON_NAME,
            'Subject': options.subject,
 	   'Html-part': html,

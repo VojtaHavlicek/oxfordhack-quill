@@ -1,5 +1,5 @@
 {
-  "name": "hackmit-reg",
+  "name": "oxfordhack-reg",
   "description": "mean stack registration system",
   "version": "0.0.1",
   "private": "true",
@@ -53,6 +53,6 @@
     "nodemon": "^1.2.1"
   },
   "engines": {
-    "node": "7.4.0"
+    "node": "^8.0"
   }
 }

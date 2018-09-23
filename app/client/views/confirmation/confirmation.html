@@ -5,11 +5,8 @@
 
   <div class="ui stackable page grid">
     <div class="column">
-
       <div class="ui form">
-
         <div class="divided title">Basic Details</div>
-
         <fieldset ng-disabled="pastConfirmation">
 
           <div class="field">
@@ -20,7 +17,7 @@
             <input type="tel"
                    name="phone"
                    ng-model="user.confirmation.phoneNumber"
-                   placeholder="(123) - 555 - 1234"
+                   placeholder="077712312312"
                    required>
           </div>
 
@@ -58,22 +55,14 @@
               ng-model="user.confirmation.shirtSize"
               required>
               <option value="">Shirt Size</option>
-              <option value="XS">Unisex X-Small</option>
               <option value="S">Unisex Small</option>
               <option value="M">Unisex Medium</option>
               <option value="L">Unisex Large</option>
               <option value="XL">Unisex X-Large</option>
-              <option value="XXL">Unisex XX-Large</option>
-              <option value="WXS">Women's X-Small</option>
-              <option value="WS">Women's Small</option>
-              <option value="WM">Women's Medium</option>
-              <option value="WL">Women's Large</option>
-              <option value="WXL">Women's X-Large</option>
-              <option value="WXXL">Women's XX-Large</option>
-            </select>
+           </select>
           </div>
 
-          <div class="field">
+          <!-- <div class="field">
             <label>
               Will you be needing hardware?
             </label>
@@ -81,9 +70,9 @@
               <input type="checkbox" ng-model="user.confirmation.wantsHardware">
               <label> Yes, I would like to use hardware in my hack. </label>
             </div>
-          </div>
+	  </div> -->
 
-          <div
+          <!-- <div
             class="field"
             ng-show="user.confirmation.wantsHardware">
             <label>
@@ -93,7 +82,7 @@
               We will have a hardware checkout, and we'll try our best to provide things that would be useful to you - however, we can't guarantee everything. We will publish a list of available hardware closer to the day of the event.
             </p>
             <input type="text" ng-model="user.confirmation.hardware">
-          </div>
+	  </div> -->
 
 
           <br>
@@ -133,7 +122,7 @@
             <a
               target="_blank"
               href="https://go.hackmit.org/skill-sheets"
-              class="ui pink button">
+              class="ui black button">
               Upload
             </a>
           </div>
@@ -210,19 +199,14 @@
           <br>
 
           <div class="divided title">Travel</div>
-
           <div class="field">
             <p>
-              As a reminder, our reimbursement policy is as follows:
+              As a reminder, tentative reimbursement policy is as follows:
             </p>
             <ul>
-              <li> Up to $100 from within Massachusetts </li>
-              <li> Up to $200 from anywhere else in North America </li>
-              <li> Up to $500 from outside North America </li>
-            </ul>
-            <p>
-              We’ll also be sending buses free of charge to Princeton, NJ; New York, NY; New Haven, CT; and Providence, RI. Again, we only reimburse the minimum-cost travel path. Head back to the dashboard to read our full travel policy.
-            </p>
+              <li> Up to £20 from within the UK </li>
+              <li> Up to £40 out of UK  </li>
+	   </ul>
           </div>
 
           <div class="field">
@@ -241,7 +225,7 @@
             </div>
 
             <p>
-              Travel reimbursement is processed and sent by check after the event. To expedite the reimbursement process and ensure that you receive your reimbursement as quickly as possible, make sure that your mailing address is accurate and you upload your receipts.
+              Travel reimbursement is processed after the event. To expedite the reimbursement process and ensure that you receive your reimbursement as quickly as possible, make sure that your mailing address is accurate and you upload your receipts.
             </p>
 
             <div class="field">
@@ -306,7 +290,7 @@
               <a
                 target="_blank"
                 href="https://go.hackmit.org/travel-receipts"
-                class="ui pink button">
+                class="ui black button">
                 Upload Receipt
               </a>
             </div>
