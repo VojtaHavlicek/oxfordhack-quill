@@ -11,18 +11,13 @@ angular.module('reg')
       // Set up the user
       var user = currentUser.data;
       $scope.user = user;
-
       $scope.pastConfirmation = Date.now() > user.status.confirmBy;
-
       $scope.formatTime = Utils.formatTime;
-
       _setupForm();
-
       $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
 
       // -------------------------------
       // All this just for dietary restriction checkboxes fml
-
       var dietaryRestrictions = {
         'Vegetarian': false,
         'Vegan': false,
@@ -93,8 +88,8 @@ angular.module('reg')
                 }
               ]
             },
-            signatureLiability: {
-              identifier: 'signatureLiabilityWaiver',
+            signature: {
+              identifier: 'signature',
               rules: [
                 {
                   type: 'empty',
@@ -102,24 +97,15 @@ angular.module('reg')
                 }
               ]
             },
-            signaturePhotoRelease: {
-              identifier: 'signaturePhotoRelease',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please type your digital signature.'
-                }
-              ]
-            },
-            signatureCodeOfConduct: {
-              identifier: 'signatureCodeOfConduct',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please type your digital signature.'
-                }
-              ]
-            },
+            checkboxMLH: {
+	      identifier: 'checkboxMLH',
+	      rules: [
+		{
+		   type: 'checkboxMLH',
+	           prompt: 'Please agree to share your data with MLH. Please understand that passing your data to sponsors and MLH helps us to make this event happen.'
+		}
+	      ]
+	    }
           }
         });
       }
