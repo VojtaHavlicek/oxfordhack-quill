@@ -57,13 +57,19 @@
     width: $sidebar-tab-size;
     height: $sidebar-tab-size;
     background: $sidebar-color;
-    top: 12px;
+    top: 16px;
 
     z-index: 9999;
 
     // Is not visible unless mobile.
     visibility: 'hidden';
     opacity: 0;
+    
+     // Hack to get the X lined up
+    line-height: $sidebar-tab-size;
+    text-align: center;
+    padding: 0;
+
 
     @include transform(translate3d($sidebar-width, 0,0));
     @include transition-duration($sidebar-transition-time);
@@ -101,7 +107,13 @@
       visibility: 'visible';
       opacity: 1;
       @include transform(translate3d(0,0,0));
-      padding: 12px;
+      // padding: 12px;
+
+      // Hack to get the > lined up
+      line-height: $sidebar-tab-size;
+      text-align: center;
+      padding: 0px;
+
     }
     .note {
       display: none;

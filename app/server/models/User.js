@@ -151,7 +151,6 @@ var status = {
 
 // define the schema for our admin model
 var schema = new mongoose.Schema({
-
   email: {
       type: String,
       required: true,
