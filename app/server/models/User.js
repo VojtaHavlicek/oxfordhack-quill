@@ -28,7 +28,7 @@ var profile = {
   graduationYear: {
     type: String,
     enum: {
-      values: '2019 2020 2021 2022 2023'.split(' '),
+      values: '2018 2019 2020 2021 2022 2023 2024 2025'.split(' '),
     }
   },
 
@@ -51,7 +51,6 @@ var profile = {
       values: 'M F O N'.split(' ')
     }
   },
-
 };
 
 // Only after confirmed
@@ -61,7 +60,7 @@ var confirmation = {
   shirtSize: {
     type: String,
     enum: {
-      values: 'S M L XL'.split(' ')
+      values: 'S M L XL WS WM WL WXL'.split(' ')
     }
   },
   // wantsHardware: Boolean,
@@ -69,7 +68,7 @@ var confirmation = {
 
   major: String,
   github: String,
-  twitter: String,
+  // twitter: String,
   website: String,
   resume: String,
 
@@ -94,9 +93,12 @@ var confirmation = {
 
   notes: String,
 
-  signatureLiability: String,
-  signaturePhotoRelease: String,
-  signatureCodeOfConduct: String,
+  signature: String,
+  ethnicity: String,
+  level_of_study: String,
+
+  // signaturePhotoRelease: String,
+  // signatureCodeOfConduct: String,
 };
 
 var status = {
@@ -332,7 +334,7 @@ schema.statics.validateProfile = function(profile, cb){
     profile.name.length > 0 &&
     profile.adult &&
     profile.school.length > 0 &&
-    ['2018', '2019', '2020', '2021', '2022', '2023'].indexOf(profile.graduationYear) > -1 &&
+    ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'].indexOf(profile.graduationYear) > -1 &&
     ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
     ));
 };
