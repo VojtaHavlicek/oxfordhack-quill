@@ -2,18 +2,23 @@ angular.module('reg')
   .controller('ConfirmationCtrl', [
     '$scope',
     '$rootScope',
-    '$state',
+    '$state', 
+    '$http',
     'currentUser',
     'Utils',
+    'Session',
     'UserService',
-    function($scope, $rootScope, $state, currentUser, Utils, UserService){
+    function($scope, $rootScope, $state, $http, currentUser, Utils, Session, UserService){
 
       // Set up the user
       var user = currentUser.data;
       $scope.user = user;
       $scope.pastConfirmation = Date.now() > user.status.confirmBy;
       $scope.formatTime = Utils.formatTime;
+
+      populateMajors();
       _setupForm();
+	    
       $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
 
       // -------------------------------
@@ -37,6 +42,30 @@ angular.module('reg')
       $scope.dietaryRestrictions = dietaryRestrictions;
 
       // -------------------------------
+      function populateMajors(){
+	      $http
+	         .get('/assets/majors.csv')
+	         .then(function(res){
+			 $scope.majors = res.data.split('\n');
+			 $scope.majors.push('Other');
+
+			 var content = [];
+
+			 for(i = 0; i < $scope.majors.length; i++) {
+				 $scope.majors[i] = $scope.majors[i].trim();
+				 content.push({title: $scope.majors[i]});
+			 }
+
+			 $('#major.ui.search')
+			   .search({
+				   source: content,
+				   cache:true,
+				   onSelect: function(result, response) {
+					   $scope.user.confirmation.major = result.title.trim();
+				   }
+			   })
+		 });
+      }
 
       function _updateUser(e){
         var confirmation = $scope.user.confirmation;
@@ -53,10 +82,10 @@ angular.module('reg')
           .updateConfirmation(user._id, confirmation)
           .success(function(data){
             sweetAlert({
-              title: "Woo!",
+              title: "Great!",
               text: "You're confirmed!",
               type: "success",
-              confirmButtonColor: "#e76482"
+              confirmButtonColor: "#002147"
             }, function(){
               $state.go('app.dashboard');
             });
@@ -113,7 +142,9 @@ angular.module('reg')
       $scope.submitForm = function(){
         if ($('.ui.form').form('is valid')){
           _updateUser();
-        }
+        }else{
+	  sweetAlert("Error","Please fill the required fields","error");
+	}
       };
 
     }]);
