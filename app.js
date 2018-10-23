@@ -14,6 +14,9 @@ var express         = require('express');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var morgan          = require('morgan');
+var multer          = require('multer');
+var upload = multer({ dest: 'uploads/' })
+
 
 var mongoose        = require('mongoose');
 var port            = process.env.PORT || 3000;
@@ -22,11 +25,19 @@ var database        = process.env.DATABASE || process.env.MONGODB_URI || "mongod
 var settingsConfig  = require('./config/settings');
 var adminConfig     = require('./config/admin');
 
+
 var app             = express();
+
+
+// ----- TEST 
+app.post('/upload', upload.single('avatar'), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+})
+
 
 // Connect to mongodb
 mongoose.connect(database);
-
 app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({
@@ -51,4 +62,5 @@ require('./app/server/routes')(app);
 // listen (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
+
 
