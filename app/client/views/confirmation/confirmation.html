@@ -121,14 +121,19 @@
           <div class="field">
             <label> Skill Sheet </label>
             <p>
-              Please upload a document outlining any skills or experience you'd like to share. This can be your CV if you have one ready. If you decide to upload your CV, you agree that we will share this information with our sponsors. Expect this to be helpful if you are looking for an internship! 
+              Please upload a document outlining any skills or experience you'd like to share. This can be your CV if you have one ready. If you decide to upload your CV, please bear in mind that we may share it with our sponsors. Expect this to be helpful if you are looking for an internship! 
 	    </p>
-            <a
+
+	     <input type="file" id="CV" class="ui" onchange="handleFiles(this.files)">
+		     <!-- ng-click="uploadCV()"> -->
+           	      <!-- </button> -->
+
+           <!-- <a
               target="_blank"
-              href="http://us"
+              href=""
               class="ui black button">
               Upload
-            </a>
+	   </a> -->
           </div>
 
           <div style="display: none;">
@@ -370,21 +375,21 @@
                 target="_blank"
                 href="http://www.oxfordhack.uk/docs/consent_oh.pdf">
                 Liability Waiver
-              </a>
+              </a> - This is 
             </p>
 	    <p>
               <a
                 target="_blank"
                 href="http://www.oxfordhack.uk/docs/photo_consent_oh.pdf">
                 Photo Release
-              </a>
+              </a> - We will be taking pictures of you. 
             </p>
 	     <p>
               <a
                 target="_blank"
                 href="http://www.oxfordhack.uk/docs/mlh-code-of-conduct.pdf">
                 MLH Code of Conduct
-              </a>
+              </a> - Please behave.
 	     </p></div>
 	     <br>
            	     <p>

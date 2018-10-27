@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": "true",
   "dependencies": {
+    "@google-cloud/storage": "^2.1.0",
     "async": "^1.4.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.8.4",
@@ -24,6 +25,7 @@
     "moment": "^2.10.3",
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
+    "multer": "^1.4.1",
     "node-mailjet": "^3.2.1",
     "nodemailer": "^1.4.0",
     "nodemailer-smtp-transport": "^1.0.3",

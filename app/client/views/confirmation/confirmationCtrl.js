@@ -8,15 +8,14 @@ angular.module('reg')
     'Utils',
     'Session',
     'UserService',
-    function($scope, $rootScope, $state, $http, currentUser, Utils, Session, UserService){
-
+    function($scope, $rootScope, $state, $http, currentUser, Utils, Session, UserService){	    
       // Set up the user
       var user = currentUser.data;
       $scope.user = user;
       $scope.pastConfirmation = Date.now() > user.status.confirmBy;
       $scope.formatTime = Utils.formatTime;
 
-      populateMajors();
+      _populateMajors();
       _setupForm();
 	    
       $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
@@ -41,8 +40,29 @@ angular.module('reg')
 
       $scope.dietaryRestrictions = dietaryRestrictions;
 
+      // ------------------------------
+      // File upload
+      var CV = document.getElementById('CV');  //$('#CV.ui');
+      CV.addEventListener("change", handleFiles, false);
+
+      function handleFiles() {
+	    var fileList = this.files; /* now you can work with the file list */
+
+	    if (!fileList){
+		return;	    
+            }else{
+	       sweetAlert("Success", "You are about to upload a file"+fileList, "success");
+	       $http.post('/someUrl', data, config).then(successCallback, errorCallback);
+
+		    //<<<<<<< --------- HERE 
+      	    }
+      }
+
+
+
       // -------------------------------
-      function populateMajors(){
+      /// Contextual Majors
+      function _populateMajors(){
 	      $http
 	         .get('/assets/majors.csv')
 	         .then(function(res){
@@ -94,6 +114,36 @@ angular.module('reg')
             sweetAlert("Uh oh!", "Something went wrong.", "error");
           });
       }
+      
+      /* function _sendUploadToGCS(req, res, next) {
+ 	     if (!req.file) {
+    		return next();
+ 	     }
+	      
+             const gcsname = $scope.fileName;
+             const file = bucket.file(gcsname);
+             const stream = file.createWriteStream({
+                metadata: {
+                   contentType: req.file.mimetype
+                },
+                resumable: false
+            });
+
+            stream.on('error', (err) => {
+                req.file.cloudStorageError = err;
+                next(err);
+            });
+
+            stream.on('finish', () => {
+                req.file.cloudStorageObject = gcsname;
+                //file.makePublic().then(() => {
+                //req.file.cloudStoragePublicUrl = getPublicUrl(gcsname);
+                next();
+                //});
+            });
+            stream.end(req.file.buffer);
+         } */
+
 
       function _setupForm(){
         // Semantic-UI form validation
@@ -125,17 +175,8 @@ angular.module('reg')
                   prompt: 'Please type your digital signature.'
                 }
               ]
-            },
-            checkboxMLH: {
-	      identifier: 'checkboxMLH',
-	      rules: [
-		{
-		   type: 'checkboxMLH',
-	           prompt: 'Please agree to share your data with MLH. Please understand that passing your data to sponsors and MLH helps us to make this event happen.'
-		}
-	      ]
-	    }
-          }
+            }
+           }
         });
       }
 
@@ -146,5 +187,10 @@ angular.module('reg')
 	  sweetAlert("Error","Please fill the required fields","error");
 	}
       };
+
+      $scope.uploadCV = function(){
+	  
+	 sweetAlert("Success", "You are about to upload a file", "success");
+      }
 
     }]);

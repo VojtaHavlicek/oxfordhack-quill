@@ -5,3 +5,6 @@ app/client/plugins/
 *.log
 .env
 nohup.out
+*.DS_Store
+*.swp
+*.swo
