@@ -30,10 +30,46 @@ var app             = express();
 
 
 // ----- TEST 
-app.post('/upload', upload.single('avatar'), function (req, res, next) {
+//const {Storage} = require('@google-cloud/storage');
+//const projectId = 'oxford-hack-2018';
+//const storage = new Storage({
+//  projectId: projectId,
+//});
+
+//const bucketName = 'oxfordhack18cv';
+
+console.log("------- Check ---------");
+
+//async function uploadFile(bucketName, filename) {
+//  const {Storage} = require('@google-cloud/storage');
+ // const storage = new Storage({projectId:'oxford-hack-2018'});
+ // const bucketName = 'oxfordhack18cv';
+
+  // Uploads a local file to the bucket
+ // await storage.bucket(bucketName).upload(filename, {
+    // Support for HTTP requests made with `Accept-Encoding: gzip`
+   // gzip: true,
+    //metadata: {
+      // Enable long-lived HTTP caching headers
+      // Use only if the contents of the file will never change
+      // (If the contents will change, use cacheControl: 'no-cache')
+      // cacheControl: 'no-cache'
+	//cacheControl: 'public, max-age=31536000',
+    //},
+  //});
+//}
+
+	
+//app.post('/upload', upload.single('file'), function (req, res, next) {    	
+  //console.log("------- ATTEMPTED FILE UPLOAD ----------");
+  //if (!req.file) {
+    //res.status(400).send("No file uploaded.");
+    //return;
+  //}
+  
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
-})
+//})
 
 
 // Connect to mongodb

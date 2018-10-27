@@ -42,23 +42,27 @@ angular.module('reg')
 
       // ------------------------------
       // File upload
-      var CV = document.getElementById('CV');  //$('#CV.ui');
-      CV.addEventListener("change", handleFiles, false);
+      //var CV = document.getElementById('CV');  //$('#CV.ui');
+      //CV.addEventListener("change", handleFiles, false);
 
       function handleFiles() {
+	    console.log(' ------- Handling Files ----- ');
 	    var fileList = this.files; /* now you can work with the file list */
-
+	
 	    if (!fileList){
+		console.log(' ------- No file ----- ');
 		return;	    
             }else{
-	       sweetAlert("Success", "You are about to upload a file"+fileList, "success");
-	       $http.post('/someUrl', data, config).then(successCallback, errorCallback);
+	       console.log(' ------- Handling Files ----- ');
 
+	       sweetAlert("Success", "You are about to upload a file"+fileList, "success");
+	      // const {Storage} = require('@google-cloud/storage');
+
+	    
+	 	//$http.post('/upload', fileList, config).then(successCallback, errorCallback);
 		    //<<<<<<< --------- HERE 
       	    }
       }
-
-
 
       // -------------------------------
       /// Contextual Majors

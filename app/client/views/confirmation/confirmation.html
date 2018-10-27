@@ -8,16 +8,17 @@
       <div class="ui form" ng-class="{'loading': loading}">
 
 	<fieldset ng-disabled="pastConfirmation"> 
-	<p>
-	Before we can confirm your attendance, we will need some additional information from you.
+	<p style="text-align:center;">
+	We will need some additional information from you.
 	<br>
-	<!-- <div class="divided title">Basic Details</div> -->
-
+	<br>
 	
+	<div class="divided title">Further Information </div> 
           <div class="field">
-            <label> What's your phone number? * </label>
+            <label> What's your phone number? </label>
             <p>
-              We need this in case we need to get ahold of you.
+              We need this in case we need to get ahold of you. 
+	      Please include prefix if you don't use UK number.
             </p>
             <input type="tel"
                    name="phone"
@@ -26,9 +27,9 @@
                    required>
           </div>
           <div class="field">
-            <label> T-shirt Size* </label>
+            <label> T-shirt Size </label>
             <p>
-              We aim to provide men and women fit t-shirts. Please let us know what fit and size do you prefer: 
+              We will supply men and women fit T-shirts. Please let us know what fit and size do you prefer: 
             </p>
             <select
               name="shirt"
@@ -44,33 +45,26 @@
               <option value="WXL">Women/XL</option>
            </select>
           </div>
-
 	  
 	  <!-- <div class="divided title">Hardware</div> -->
 	  <div class="field" style="display:none;">
 			    <p> Thanks to the support of MLH, we will be supplying hardware to the event which you can use for your hack. Do you have any dream hardware kit you would like to play with at the hackathon?</p> 
-
              <div class="ui checkbox">
               <input type="checkbox" ng-model="user.confirmation.wantsHardware">
               <label> Yes, I would like to use hardware in my hack. </label>
-            </div>
+             </div>
 	  </div> 
 
            <div
-            class="field"
+            class="field"  style="display:none;"
             ng-show="user.confirmation.wantsHardware">
             <label>
               What kind of hardware would be useful for you?
             </label>
              <input type="text" ng-model="user.confirmation.hardware">
 	  </div> 
-
-	  <br> 
-	  <br>
-
-	  <div class="divided title"> Skills </div> 
 	  <div class="field">
-            <label> What is your field of study? </label>
+            <label> What do/did you study? </label>
 	    <div id="major" class="ui search">
 		    <div class="ui input">
                          <input class="prompt"
@@ -85,6 +79,7 @@
 
 	  <div class="field">
             <label> What is your current level of study? </label>
+	    <p> If you are not studying, what is the level of your formal education? </p>
 	    <select name="level_of_study"
 		    ng-model="user.confirmation.level_of_study"		    
 		    required>
@@ -93,22 +88,18 @@
   		 <option value="Graduate">Graduate</option>
  		 <option value="PhD">Postgraduate</option>
 		 <option value="Above PhD">Above postgraduate</option>
-  		<option value="NA">Not enrolled to university</option>
+  		<option value="NA">Professional / Not studying</option>
 	    </select>
-            <!-- <input type="text"
-                   name="study"
-                   placeholder="Computer Science, Physics, Basket Weaving, etc."
-		   ng-model="user.confirmation.major"> --> 
           </div>
 
 
-          <div class="field">
+          <div class="field" style="display:none;">
             <label> Github </label>
             <input type="text"
                    name="github"
                    placeholder="https://github.com/foobar"
                    ng-model="user.confirmation.github">
-          </div>
+	  </div> 
 
           <div class="field" style="display:none;">
             <label> Twitter </label>
@@ -118,13 +109,13 @@
                    ng-model="user.confirmation.twitter">
           </div>
 
-          <div class="field">
-            <label> Skill Sheet </label>
-            <p>
+	  <div class="field" style="display:none;"> 
+	    <label> Skill Sheet </label> 
+             <p>
               Please upload a document outlining any skills or experience you'd like to share. This can be your CV if you have one ready. If you decide to upload your CV, please bear in mind that we may share it with our sponsors. Expect this to be helpful if you are looking for an internship! 
-	    </p>
+	  </p> 
 
-	     <input type="file" id="CV" class="ui" onchange="handleFiles(this.files)">
+	   <input type="file" id="CV" class="ui" onchange="handleFiles(this.files)"> 
 		     <!-- ng-click="uploadCV()"> -->
            	      <!-- </button> -->
 
@@ -134,7 +125,7 @@
               class="ui black button">
               Upload
 	   </a> -->
-          </div>
+	  </div>
 
           <div style="display: none;">
           <div class="divided title">Hosting Details</div>
@@ -303,9 +294,7 @@
             </div>
 
           </div>
-	  </div>
-	  
-	  	   
+	  </div> 
 	   
            <br>
 	   <br>
@@ -322,7 +311,6 @@
           <div class="inline fields">
             <div class="field"
               ng-repeat="(key, value) in dietaryRestrictions">
-
               <div class="ui checkbox">
                 <input type="checkbox" ng-model="dietaryRestrictions[key]" />
                 <label>{{key}}</label>
@@ -331,18 +319,22 @@
             </div>
           </div>
 	  <div class="field">
-
 	   <label> Medical Conditions </label>
 	   <p>
-	   Please feel free to let us know if you suffer from a medical conditions we should be aware of. While we understand that this information tends to be sensitive, we want our medical staff to ensure their best to be ready in case of medical emergency (say, have sterile insulin injecions ready for you, should you forget yours at home). 
+	   Please let us know if you have any medical conditions that we should know about to ensure your safety and well-being during the hackathon.
 	   </p>
 	   <textarea
               ng-model="user.confirmation.medical"></textarea>
 	  </div>
 
+	  <br>
+	  <br>
+	   <div class="divided title"> Stats </div>
+	   MLH collects statistics on ethnicity of participants. If you don't like to answer this question, please choose `prefer not to answer'.
+	   
 	   <br>
 	   <br>
-	   <div class="divided title"> Stats </div> 
+
 	   <div class="field"> 
 		 <label>Ethnicity</label>
                  <select name="ethnicity"
@@ -360,38 +352,34 @@
 		   
 	   </div> 
 
-
-
-
 	  <br>
 	  <br>
           <div class="divided title">Legal Matters</div>
 	  <p> Please review the information in the documents below: </p>
           <div class="field"> 
 		  <!-- <label> Liability Waiver </label> -->
-		  <div style="text-align: center;">
-            <p>
+           <ul>
+	      <li>
               <a
                 target="_blank"
                 href="http://www.oxfordhack.uk/docs/consent_oh.pdf">
                 Liability Waiver
-              </a> - This is 
-            </p>
-	    <p>
+              </a> - Just in case you hurt yourself during the event. </li>
+            
+	    <li>
               <a
                 target="_blank"
                 href="http://www.oxfordhack.uk/docs/photo_consent_oh.pdf">
                 Photo Release
               </a> - We will be taking pictures of you. 
-            </p>
-	     <p>
+            </li>
+	     <li>
               <a
                 target="_blank"
                 href="http://www.oxfordhack.uk/docs/mlh-code-of-conduct.pdf">
                 MLH Code of Conduct
-              </a> - Please behave.
-	     </p></div>
-	     <br>
+              </a> - By signing this, you promise us to behave well.
+	     </li></ul>
            	     <p>
               By writing my name below, I affirm that I have read and accepted the terms of the liability waiver, photo release and MLH code of conduct.  I also authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the MLH Privacy Policy. I further I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy.
               </p>
@@ -404,11 +392,10 @@
 				               <div class="ui checkbox">
             <input type="checkbox" id="adult" ng-model="user.confirmation.checkboxMLH">
 	    <label for="adult"> </label> -->
-         
           <div class="field">
 		  <br>
 		  <br>
-            <div class="divided title"> Additional Notes </div> 
+            <div class="divided title">Additional Notes</div> 
             <p>
               If there's anything else you need to let us know, tell us here!
             </p>
