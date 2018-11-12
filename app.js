@@ -14,8 +14,8 @@ var express         = require('express');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var morgan          = require('morgan');
-var multer          = require('multer');
-var upload = multer({ dest: 'uploads/' })
+// var multer          = require('multer');
+//var upload = multer({ dest: 'uploads/' })
 
 
 var mongoose        = require('mongoose');
